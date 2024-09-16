@@ -50,7 +50,7 @@ Function New-ARMParameterObject
         $FunctionName       = $Name
         $FrontDoorName      = $Name
         $appConfigName      = $Name
-        $aspGenevaName      = $Name
+        $azFuncStorageName  = $Name
 
         ## The names of the Azure Cosmos Database and Container - Do not change (Must match with the values in the compiled
         ## Windows Package Manager Functions [WinGet.RestSource.Functions.zip])
@@ -62,6 +62,7 @@ Function New-ARMParameterObject
         $monitoringTenant           = ""
         $monitoringRole             = ""
         $monitoringMetricsAccount   = ""
+        $runFromPackageUrl          = ""
 
         ## The values required for the Azure App Config ARM Template
         #$appConfigFeatureFlag   = ""
@@ -357,11 +358,11 @@ Function New-ARMParameterObject
                                     failoverPriority = 0
                                     isZoneRedundant  = $false
                                 }
-                                @{
-                                    locationName     = $SecondaryRegionName
-                                    failoverPriority = 1
-                                    isZoneRedundant  = $false
-                                }
+                                # @{
+                                #     locationName     = $SecondaryRegionName
+                                #     failoverPriority = 1
+                                #     isZoneRedundant  = $false
+                                # }
                             )
                         }
                         # Allows requests from azure portal and Azure datacenter ip range (0.0.0.0)
@@ -467,7 +468,6 @@ Function New-ARMParameterObject
                     '$Schema' = $JSONSchema
                     contentVersion = $JSONContentVersion
                     Parameters = @{
-                        storageSecretName        = @{ value = $AzKVStorageSecretName    }   # Name used to contain the Storage Account connection string in the Key Value
                         location                 = @{ value = $Region                   }   # Azure hosting location
                         cosmosDatabase           = @{ value = $CDBDatabaseName          }   # Cosmos Database Name
                         cosmosContainer          = @{ value = $CDBContainerName         }   # Cosmos Container Name
@@ -476,10 +476,12 @@ Function New-ARMParameterObject
                         appServiceName           = @{ value = $aspName                  }   # Azure App Service Name
                         keyVaultName             = @{ value = $KeyVaultName             }   # Azure Keyvault Name
                         appInsightName           = @{ value = $AppInsightsName          }   # Azure App Insights Name
+                        azFuncStorageName        = @{ value = $azFuncStorageName        }   # Azure App Insights Name 
                         manifestCacheEndpoint    = @{ value = $manifestCacheEndpoint    }   # unknown
                         monitoringTenant         = @{ value = $monitoringTenant         }   # unknown
                         monitoringRole           = @{ value = $monitoringRole           }   # unknown
                         monitoringMetricsAccount = @{ value = $monitoringMetricsAccount }   # unknown
+                        runFromPackageUrl        = @{ value = $runFromPackageUrl        }   # unknown
                     }
                 }
             }    

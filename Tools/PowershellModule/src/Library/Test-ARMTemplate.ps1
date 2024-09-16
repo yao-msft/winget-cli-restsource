@@ -55,7 +55,6 @@ Function Test-ARMTemplate
                 if($AzResourceResult -ne "") {
                     if($AzNameResult) { 
                         $ErrorMessage = "$($Object.ObjectType) name is already in use, or there is an error with the Parameter file"
-                        Write-Verbose "Name is already in use."
                         Write-Error -Message $ErrorMessage -TargetObject $ErrReturnObject
                     }
                     else {

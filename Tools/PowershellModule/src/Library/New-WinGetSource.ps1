@@ -28,6 +28,9 @@ Function New-WinGetSource
     .PARAMETER Region
     [Optional] The Azure location where objects will be created in. (Default: westus)
 
+    .PARAMETER TemplateFolderPath
+    [Optional] The directory where ARM templates will be searched. (Default: $PSScriptRoot\ARMTemplate)
+
     .PARAMETER ParameterOutput
     [Optional] The directory where Parameter objects will be created in. (Default: Current Directory)
 
@@ -66,10 +69,11 @@ Function New-WinGetSource
         [Parameter(Position=1, Mandatory=$false)] [string]$ResourceGroup = "WinGetRestSource",
         [Parameter(Position=2, Mandatory=$false)] [string]$SubscriptionName,
         [Parameter(Position=3, Mandatory=$false)] [string]$Region = "westus",
-        [Parameter(Position=4, Mandatory=$false)] [string]$ParameterOutput = $(Get-Location).Path,
-        [Parameter(Position=5, Mandatory=$false)] [string]$RestSourcePath = "$PSScriptRoot\RestAPI\WinGet.RestSource.Functions.zip",
+        [Parameter(Position=4, Mandatory=$false)] [string]$TemplateFolderPath = "$PSScriptRoot\ARMTemplate",
+        [Parameter(Position=5, Mandatory=$false)] [string]$ParameterOutput = $(Get-Location).Path,
+        [Parameter(Position=6, Mandatory=$false)] [string]$RestSourcePath = "$PSScriptRoot\RestAPI\WinGet.RestSource.Functions.zip",
         [ValidateSet("Demo", "Basic", "Enhanced")]
-        [Parameter(Position=6, Mandatory=$false)] [string]$ImplementationPerformance = "Basic",
+        [Parameter(Position=7, Mandatory=$false)] [string]$ImplementationPerformance = "Basic",
         [Parameter()] [switch]$ShowConnectionInstructions
     )
     BEGIN
@@ -81,7 +85,6 @@ Function New-WinGetSource
 
         ## Paths to the Parameter and Template folders and the location of the Function Zip
         $ParameterFolderPath = "$ParameterOutput\Parameters"
-        $TemplateFolderPath  = "$PSScriptRoot\ARMTemplate"
 
         ## Outlines the Azure Modules that are required for this Function to work.
         $RequiredModules     = @("Az.Resources", "Az.Accounts", "Az.KeyVault","Az.Websites", "Az.Functions")

@@ -80,10 +80,10 @@ Function New-ARMObjects
                 ## [TODO:] Fix the secure string readings that were removed to unblock the 1ES pipeline migration.
                 ## The previous usage of the secure string readings was causing failures in the static analysis job of the pipeline.
                 ## https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/avoidusingconverttosecurestringwithplaintext?view=ps-modules
-                $CosmosAccountEndpointValue       = ""
-                $CosmosAccountKeyWriteValue       = ""
-                $CosmosAccountKeyReadValue        = ""
-                $AzStorageAccountConnectionString = ""
+                $CosmosAccountEndpointValue       = ConvertTo-SecureString -String $($(Get-AzCosmosDBAccount -ResourceGroupName $AzResourceGroup).DocumentEndpoint) -AsPlainText -Force
+                $CosmosAccountKeyWriteValue       = ConvertTo-SecureString -String $($(Get-AzCosmosDBAccountKey -ResourceGroupName $AzResourceGroup -Name $CosmosAccountName).PrimaryMasterKey) -AsPlainText -Force
+                $CosmosAccountKeyReadValue        = ConvertTo-SecureString -String $($(Get-AzCosmosDBAccountKey -ResourceGroupName $AzResourceGroup -Name $CosmosAccountName).PrimaryReadonlyMasterKey) -AsPlainText -Force
+                $AzStorageAccountConnectionString = ConvertTo-SecureString -String "DefaultEndpointsProtocol=https;AccountName=$AzStorageAccountName;AccountKey=$AzStorageAccountKey;EndpointSuffix=$AzEndpointSuffix" -AsPlainText -Force
 
                 ## Adds the Azure Storage Account Connection String to the Keyvault
                 Write-Verbose -Message "      Creating Keyvault Secret for Azure Storage Account Connection String."
@@ -141,7 +141,7 @@ Function New-ARMObjects
                 Write-Information -MessageData "      $($Object.ObjectType) was successfully created."
             }
     
-            ## Publish GitHub Functions to newly created Azure Function
+            ## Publish Azure Functions package to newly created Azure Function
             if($Object.ObjectType -eq "Function") {
                 ## Gets the Azure Function Name from the Parameter JSON file contents.
                 $AzFunctionName = $jsonFunction.parameters.functionName.value
