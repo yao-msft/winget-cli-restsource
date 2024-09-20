@@ -190,6 +190,12 @@
             "metadata": {
                 "description": "Monitoring Role"
             }
+        },
+        "runFromPackageUrl": {
+            "type": "string",
+            "metadata": {
+                "description": "The url of the zip package of this azure function. The az function must have at least Storage Blob Data Reader role to the storage account."
+            }
         }
     },
     "variables": {

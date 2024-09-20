@@ -208,7 +208,7 @@ Function Get-WinGetManifest
                         $ManifestFileType    = $PathChildItemsJSON.Extension
                     }
                     elseif($PathChildItemsYAML.count -gt 0) {
-                        Write-Verbose -Message "Single YAML has been found in the specified directory."
+                        Write-Verbose -Message "Multiple YAML has been found in the specified directory."
                         ## YAML has been found in the target folder.
                         $ManifestFile     = $PathChildItemsYAML
                         $ManifestFileType = ".yaml"
