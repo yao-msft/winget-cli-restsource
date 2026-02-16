@@ -885,7 +885,6 @@ components:
           - zip
           - pwa
           - msstore
-          - font
 
     Scope:
       description: Enumeration of Values for Scope
