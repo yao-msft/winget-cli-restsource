@@ -9,7 +9,7 @@ Installers:
   - RelativeFilePath: Font.ttf
 License: License
 ManifestType: merged
-ManifestVersion: 1.1.0
+ManifestVersion: 1.12.0
 PackageIdentifier: Fontpack.test
 PackageLocale: en-US
 PackageName: Test Font Pack

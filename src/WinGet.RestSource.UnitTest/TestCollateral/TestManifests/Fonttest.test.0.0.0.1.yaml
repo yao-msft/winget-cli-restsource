@@ -6,7 +6,7 @@ Installers:
   InstallerUrl: https://test.com/test.ttf
 License: License
 ManifestType: merged
-ManifestVersion: 1.1.0
+ManifestVersion: 1.12.0
 PackageIdentifier: Fonttest.test
 PackageLocale: en-US
 PackageName: Test Font
