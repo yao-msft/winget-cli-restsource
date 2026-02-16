@@ -874,6 +874,7 @@ components:
         - wix
         - burn
         - portable
+        - font
 
     InstallerType:
       description: Enumeration of supported installer types.
@@ -884,6 +885,7 @@ components:
           - zip
           - pwa
           - msstore
+          - font
 
     Scope:
       description: Enumeration of Values for Scope

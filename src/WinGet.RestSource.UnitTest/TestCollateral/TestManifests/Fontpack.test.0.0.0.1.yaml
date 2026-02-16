@@ -1,0 +1,18 @@
+Installers:
+- Architecture: neutral
+  InstallerLocale: en-US
+  InstallerSha256: 01234567890ABCDEF01234567890ABCDEF01234567890ABCDEF1234567890ABC
+  InstallerType: zip
+  InstallerUrl: https://test.com/fonts.zip
+  NestedInstallerType: font
+  NestedInstallerFiles:
+  - RelativeFilePath: Font.ttf
+License: License
+ManifestType: merged
+ManifestVersion: 1.1.0
+PackageIdentifier: Fontpack.test
+PackageLocale: en-US
+PackageName: Test Font Pack
+PackageVersion: 0.0.0.1
+Publisher: Test
+ShortDescription: Test font package in zip
