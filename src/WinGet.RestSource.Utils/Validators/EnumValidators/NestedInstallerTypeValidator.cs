@@ -25,6 +25,7 @@ namespace Microsoft.WinGet.RestSource.Utils.Validators.EnumValidators
             "wix",
             "burn",
             "portable",
+            "font",
         };
 
         /// <summary>
